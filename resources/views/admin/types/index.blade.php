@@ -52,7 +52,7 @@
                                         aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <p>Sicuro di voler cancellare il Progetto {{ $type->title }}?</p>
+                                    <p>Sicuro di voler cancellare la Tipologia {{ $type->name }}?</p>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
