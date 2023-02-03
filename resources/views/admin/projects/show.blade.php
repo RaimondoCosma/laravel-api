@@ -20,12 +20,24 @@
                 <span class="badge text-bg-primary">{{ $technology->name }}</span>
             @endforeach
         @endif
-        <div class="my-4">
-
-        </div>
         <h3 class="mt-4">Descrizione progetto:</h3>
         <p>{{ $project->description }}</p>
         <h3 class="mt-4">Slug del progetto</h3>
         <p>{{ $project->slug }}</p>
+        <div class="my-4">
+            <h2>Commenti:</h2>
+            @if ($project->comments->isNotEmpty())
+                @foreach ($project->comments as $comment)
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $comment->name }}</h5>
+                            <p class="card-text">{{ $comment->content }}</p>
+                            <a href="#" class="card-link">Card link</a>
+                        </div>
+                    </div>
+                @endforeach
+            @else
+            @endif
+        </div>
     </section>
 @endsection
