@@ -24,19 +24,24 @@
         <p>{{ $project->description }}</p>
         <h3 class="mt-4">Slug del progetto</h3>
         <p>{{ $project->slug }}</p>
-        <div class="my-4">
+        <div class="my-4 d-flex flex-column align-items-center">
             <h2>Commenti:</h2>
             @if ($project->comments->isNotEmpty())
                 @foreach ($project->comments as $comment)
-                    <div class="card" style="width: 18rem;">
+                    <div class="card mt-3" style="width: 18rem;">
                         <div class="card-body">
                             <h5 class="card-title">{{ $comment->name }}</h5>
                             <p class="card-text">{{ $comment->content }}</p>
-                            <a href="#" class="card-link">Card link</a>
+                            <form action="{{ route('admin.comments.destroy', $comment) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Elimina</button>
+                            </form>
                         </div>
                     </div>
                 @endforeach
             @else
+                <p>Non sono presenti commenti per questo progetto!</p>
             @endif
         </div>
     </section>
